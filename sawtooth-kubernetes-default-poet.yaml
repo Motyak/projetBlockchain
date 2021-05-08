@@ -67,7 +67,7 @@ items:
               - bash
             args:
               - -c
-              - "sawtooth-rest-api -C tcp://$HOSTNAME:4004"
+              - "sawtooth-rest-api -C tcp://$HOSTNAME:4004 -B $HOSTNAME:8080"
 
           - name: sawtooth-settings-tp
             image: hyperledger/sawtooth-settings-tp:chime
@@ -169,7 +169,7 @@ items:
   metadata:
     name: sawtooth-0
   spec:
-    type: ClusterIP
+    type: NodePort
     selector:
       name: sawtooth-0
     ports:
@@ -247,7 +247,7 @@ items:
               - bash
             args:
               - -c
-              - "sawtooth-rest-api -C tcp://$HOSTNAME:4004"
+              - "sawtooth-rest-api -C tcp://$HOSTNAME:4004 -B $HOSTNAME:8080"
 
           - name: sawtooth-settings-tp
             image: hyperledger/sawtooth-settings-tp:chime
@@ -311,7 +311,7 @@ items:
   metadata:
     name: sawtooth-1
   spec:
-    type: ClusterIP
+    type: NodePort
     selector:
       name: sawtooth-1
     ports:
@@ -389,7 +389,7 @@ items:
               - bash
             args:
               - -c
-              - "sawtooth-rest-api -C tcp://$HOSTNAME:4004"
+              - "sawtooth-rest-api -C tcp://$HOSTNAME:4004 -B $HOSTNAME:8080"
 
           - name: sawtooth-settings-tp
             image: hyperledger/sawtooth-settings-tp:chime
@@ -453,7 +453,7 @@ items:
   metadata:
     name: sawtooth-2
   spec:
-    type: ClusterIP
+    type: NodePort
     selector:
       name: sawtooth-2
     ports:
@@ -531,7 +531,7 @@ items:
               - bash
             args:
               - -c
-              - "sawtooth-rest-api -C tcp://$HOSTNAME:4004"
+              - "sawtooth-rest-api -C tcp://$HOSTNAME:4004 -B $HOSTNAME:8080"
 
           - name: sawtooth-settings-tp
             image: hyperledger/sawtooth-settings-tp:chime
@@ -595,7 +595,7 @@ items:
   metadata:
     name: sawtooth-3
   spec:
-    type: ClusterIP
+    type: NodePort
     selector:
       name: sawtooth-3
     ports:
@@ -673,7 +673,7 @@ items:
               - bash
             args:
               - -c
-              - "sawtooth-rest-api -C tcp://$HOSTNAME:4004"
+              - "sawtooth-rest-api -C tcp://$HOSTNAME:4004 -B $HOSTNAME:8080"
 
           - name: sawtooth-settings-tp
             image: hyperledger/sawtooth-settings-tp:chime
@@ -737,7 +737,7 @@ items:
   metadata:
     name: sawtooth-4
   spec:
-    type: ClusterIP
+    type: NodePort
     selector:
       name: sawtooth-4
     ports:

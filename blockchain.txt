@@ -1,0 +1,50 @@
+https://medium.com/coinmonks/what-are-the-differences-between-ethereum-hyperledger-fabric-and-hyperledger-sawtooth-5d0fc279d862
+
+----------------------------------
+
+Changer :
+sawtooth-rest-api -C tcp://$HOSTNAME:4004
+EN
+sawtooth-rest-api -C tcp://$HOSTNAME:4004 -B http://$HOSTNAME:8008
+ET
+ClusterIP
+EN
+NodePort
+
+Pour récupérer l'adresse IP du cluster minikube et les ports exposés (et forwardés si nodeport)
+d'un service :
+minikube service sawtooth-0 # pour le premier noeud validateur
+
+-----------------------------------
+
+Utiliser hyperledger/sawtooth-smallbank-tp-go
+comme transaction processor à la place de 
+intkey et xo.
+Retirer les shell de chaque noeud validateur.
+
+EN GROS s'inspirer de ça :
+https://github.com/hyperledger/caliper-benchmarks/blob/v0.3.2/networks/sawtooth/smallbank/sawtooth-smallbank-go.yaml
+
+Être capable d'envoyer des transactions
+smallbank depuis le réseau hôte (les api rest sont exposées)
+en utilisant ce code :
+https://github.com/hyperledger/caliper-benchmarks/blob/v0.3.2/src/sawtooth/scenario/smallbank/SmallBankBatchBuilder.js
+https://github.com/hyperledger/caliper-benchmarks/blob/v0.3.2/src/sawtooth/scenario/smallbank/protos/smallbank.proto
+'-> Connecteur fourni pour Sawtooth
+
+Utiliser caliper v0.3.2 pour faire tourner le benchmark smallbank
+sur le réseau sawtooth.
+Utiliser la config du SUT sawtooth ici :
+https://github.com/hyperledger/caliper-benchmarks/blob/v0.3.2/networks/sawtooth/smallbank/sawtooth.json
+Utiliser le benchmark ici :
+https://github.com/hyperledger/caliper-benchmarks/tree/v0.3.2/benchmarks/scenario/smallbank
+
+PB ACTUEL :
+dans le sawtooth.json (network), ça indique d'une seul URL pour l'API REST
+et pour l'url du validator.
+Est-ce que ça implique que ça sera toujours le même noeud qui travaille ?
+Ou est-ce que ça suit quand même le consensus PoET et donc c'est random ?
+Auquel cas on peut conserver exactement le même fichier de config pour
+le réseau sawtooth avec caliper.
+'-> A PRIORI C'EST OK, le validateur va utiliser l'interface de consensus
+pour élire un validateur pour la publication de bloc.

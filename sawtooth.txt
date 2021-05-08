@@ -1,0 +1,55 @@
+The Consensus interface : Determine who can publish a block, 
+whether a published block is valid according to the consensus 
+rules, and which block should become the chain head in the 
+case of a fork.
+
+Completer : Receive the blocks and batches. Guarantee that
+all dependencies for the blocks and batches have been
+satisfied. Completed batches go the the Block publisher
+and completed blocks go to the Chain controller.
+
+Block publisher : Create new candidate blocks. As batches
+are received by the validator (from clients or other
+Sawtooth nodes), they are added to the Block publisher's
+pending queue. Only valid transactions will be added to
+the next candidate block. Transactions are processed
+incrementally as they are received.
+
+Chain controller : Maintain the current chain head.
+Processing is block-based, when it receives a candidate
+block (over the network or from the Block publisher), 
+it determines whether the chain head should be updated
+to point to that candidate block.
+
+Executor : Execute the transactions by sending them to 
+transaction processors. When the transaction processor
+notify the executor the transaction is complete, it
+updates the sheduler with the transaction's result
+with the updated context.
+
+
+____________________________
+
+Un client soumet une transaction dans un batch inclus
+dans une requête HTTP POST en destination de l'API REST
+du validateur.
+
+Le completer va vérifier que les dépendances du batch sont OK
+puis transmettre le batch au BlockPublisher.
+
+Le BlockPublisher va faire appel à l'interface BlockPublisher
+du consensus mis en place (ici PoET) pour savoir quel 
+noeud validateur va se charger de publier le bloc.
+
+Le BlockPublisher du noeud validateur élu va par la suite
+valider le batch et l'inclure dans un bloc (en utilisant les
+interfaces BlockVerifier et ForkResolver du consensus).
+Le bloc complété va ensuite être broadcast à tous les noeuds
+validateur du réseau au travers du protocole Gossip.
+
+Le ChainController de chauque validateur va ensuite se charger de 
+la validation du bloc et de la résolution du fork.
+
+La transaction sera par la suite transmise à l'Executor qui va
+l'envoyer aux transaction processors et update le scheduler en
+fonction de la réponse reçue. (update du state de la blockchain).
