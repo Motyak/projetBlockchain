@@ -16,14 +16,13 @@ items:
           name: sawtooth-0
       spec:
         containers:
-          - name: sawtooth-intkey-tp-python
-            image: hyperledger/sawtooth-intkey-tp-python:chime
+          - name: smallbank-tp-go
+            image: hyperledger/sawtooth-smallbank-tp-go:latest
             command:
               - bash
             args:
               - -c
-              - "intkey-tp-python -vv -C tcp://$HOSTNAME:4004"
-
+              - "smallbank-tp-go -vv -C tcp://$HOSTNAME:4004"
           - name: sawtooth-poet-engine
             image: hyperledger/sawtooth-poet-engine:chime
             command:
@@ -76,14 +75,6 @@ items:
             args:
               - -c
               - "settings-tp -vv -C tcp://$HOSTNAME:4004"
-
-          - name: sawtooth-shell
-            image: hyperledger/sawtooth-shell:chime
-            command:
-              - bash
-            args:
-              - -c
-              - "sawtooth keygen && tail -f /dev/null"
 
           - name: sawtooth-validator
             image: hyperledger/sawtooth-validator:chime
@@ -153,13 +144,6 @@ items:
                 - name: poet-shared-0
                   mountPath: "/poet-shared"
 
-          - name: sawtooth-xo-tp-python
-            image: hyperledger/sawtooth-xo-tp-python:chime
-            command:
-              - bash
-            args:
-              - -c
-              - "xo-tp-python -vv -C tcp://$HOSTNAME:4004"
         volumes:
           - name: poet-shared-0
             emptyDir: {}
@@ -206,14 +190,13 @@ items:
           name: sawtooth-1
       spec:
         containers:
-          - name: sawtooth-intkey-tp-python
-            image: hyperledger/sawtooth-intkey-tp-python:chime
+          - name: smallbank-tp-go
+            image: hyperledger/sawtooth-smallbank-tp-go:latest
             command:
               - bash
             args:
               - -c
-              - "intkey-tp-python -vv -C tcp://$HOSTNAME:4004"
-
+              - "smallbank-tp-go -vv -C tcp://$HOSTNAME:4004"
           - name: sawtooth-poet-engine
             image: hyperledger/sawtooth-poet-engine:chime
             command:
@@ -257,14 +240,6 @@ items:
               - -c
               - "settings-tp -vv -C tcp://$HOSTNAME:4004"
 
-          - name: sawtooth-shell
-            image: hyperledger/sawtooth-shell:chime
-            command:
-              - bash
-            args:
-              - -c
-              - "sawtooth keygen && tail -f /dev/null"
-
           - name: sawtooth-validator
             image: hyperledger/sawtooth-validator:chime
             ports:
@@ -295,13 +270,6 @@ items:
                 - name: poet-shared-1
                   mountPath: "/poet-shared"
 
-          - name: sawtooth-xo-tp-python
-            image: hyperledger/sawtooth-xo-tp-python:chime
-            command:
-              - bash
-            args:
-              - -c
-              - "xo-tp-python -vv -C tcp://$HOSTNAME:4004"
         volumes:
           - name: poet-shared-1
             emptyDir: {}
@@ -348,14 +316,13 @@ items:
           name: sawtooth-2
       spec:
         containers:
-          - name: sawtooth-intkey-tp-python
-            image: hyperledger/sawtooth-intkey-tp-python:chime
+          - name: smallbank-tp-go
+            image: hyperledger/sawtooth-smallbank-tp-go:latest
             command:
               - bash
             args:
               - -c
-              - "intkey-tp-python -vv -C tcp://$HOSTNAME:4004"
-
+              - "smallbank-tp-go -vv -C tcp://$HOSTNAME:4004"
           - name: sawtooth-poet-engine
             image: hyperledger/sawtooth-poet-engine:chime
             command:
@@ -399,14 +366,6 @@ items:
               - -c
               - "settings-tp -vv -C tcp://$HOSTNAME:4004"
 
-          - name: sawtooth-shell
-            image: hyperledger/sawtooth-shell:chime
-            command:
-              - bash
-            args:
-              - -c
-              - "sawtooth keygen && tail -f /dev/null"
-
           - name: sawtooth-validator
             image: hyperledger/sawtooth-validator:chime
             ports:
@@ -437,13 +396,6 @@ items:
                 - name: poet-shared-2
                   mountPath: "/poet-shared"
 
-          - name: sawtooth-xo-tp-python
-            image: hyperledger/sawtooth-xo-tp-python:chime
-            command:
-              - bash
-            args:
-              - -c
-              - "xo-tp-python -vv -C tcp://$HOSTNAME:4004"
         volumes:
           - name: poet-shared-2
             emptyDir: {}
@@ -490,14 +442,13 @@ items:
           name: sawtooth-3
       spec:
         containers:
-          - name: sawtooth-intkey-tp-python
-            image: hyperledger/sawtooth-intkey-tp-python:chime
+          - name: smallbank-tp-go
+            image: hyperledger/sawtooth-smallbank-tp-go:latest
             command:
               - bash
             args:
               - -c
-              - "intkey-tp-python -vv -C tcp://$HOSTNAME:4004"
-
+              - "smallbank-tp-go -vv -C tcp://$HOSTNAME:4004"
           - name: sawtooth-poet-engine
             image: hyperledger/sawtooth-poet-engine:chime
             command:
@@ -541,14 +492,6 @@ items:
               - -c
               - "settings-tp -vv -C tcp://$HOSTNAME:4004"
 
-          - name: sawtooth-shell
-            image: hyperledger/sawtooth-shell:chime
-            command:
-              - bash
-            args:
-              - -c
-              - "sawtooth keygen && tail -f /dev/null"
-
           - name: sawtooth-validator
             image: hyperledger/sawtooth-validator:chime
             ports:
@@ -579,13 +522,6 @@ items:
                 - name: poet-shared-3
                   mountPath: "/poet-shared"
 
-          - name: sawtooth-xo-tp-python
-            image: hyperledger/sawtooth-xo-tp-python:chime
-            command:
-              - bash
-            args:
-              - -c
-              - "xo-tp-python -vv -C tcp://$HOSTNAME:4004"
         volumes:
           - name: poet-shared-3
             emptyDir: {}
@@ -632,14 +568,13 @@ items:
           name: sawtooth-4
       spec:
         containers:
-          - name: sawtooth-intkey-tp-python
-            image: hyperledger/sawtooth-intkey-tp-python:chime
+          - name: smallbank-tp-go
+            image: hyperledger/sawtooth-smallbank-tp-go:latest
             command:
               - bash
             args:
               - -c
-              - "intkey-tp-python -vv -C tcp://$HOSTNAME:4004"
-
+              - "smallbank-tp-go -vv -C tcp://$HOSTNAME:4004"
           - name: sawtooth-poet-engine
             image: hyperledger/sawtooth-poet-engine:chime
             command:
@@ -683,14 +618,6 @@ items:
               - -c
               - "settings-tp -vv -C tcp://$HOSTNAME:4004"
 
-          - name: sawtooth-shell
-            image: hyperledger/sawtooth-shell:chime
-            command:
-              - bash
-            args:
-              - -c
-              - "sawtooth keygen && tail -f /dev/null"
-
           - name: sawtooth-validator
             image: hyperledger/sawtooth-validator:chime
             ports:
@@ -721,13 +648,6 @@ items:
                 - name: poet-shared-4
                   mountPath: "/poet-shared"
 
-          - name: sawtooth-xo-tp-python
-            image: hyperledger/sawtooth-xo-tp-python:chime
-            command:
-              - bash
-            args:
-              - -c
-              - "xo-tp-python -vv -C tcp://$HOSTNAME:4004"
         volumes:
           - name: poet-shared-4
             emptyDir: {}

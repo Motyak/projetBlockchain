@@ -48,3 +48,40 @@ Auquel cas on peut conserver exactement le même fichier de config pour
 le réseau sawtooth avec caliper.
 '-> A PRIORI C'EST OK, le validateur va utiliser l'interface de consensus
 pour élire un validateur pour la publication de bloc.
+
+---------------------------
+
+Essayer d'executer le benchmark smallbank avec la version 0.3.2 de caliper
+et la dernière version de sawtooth.
+
+Si ca ne marche pas, refaire le test en prenant les version 1.0 de :
+- sawtooth-settings-tp
+- sawtooth-smallbank-tp-go
+- sawtooth-validator
+- sawtooth-rest-api
+
+INSTALLATION DE CALIPER :
+
+1) Installer les pré-requis :
+sudo apt-get update && sudo apt-get install -y node-gyp python2 g++ git docker-ce docker-ce-cli containerd.io nodejs npm
+
+2) S'assurer d'avoir la dernière version de npm :
+sudo npm install -g npm
+
+3) Initialiser le répertoire node et installer le module caliper-cli (v0.3.2) avec ses dépendances :
+user@ubuntu:~/projetBlockchain/caliper-sawtooth-smallbank$ npm init -y && npm install --only=prod @hyperledger/caliper-cli@0.3.2
+
+EXECUTION D'UN BENCHMARK :
+
+1) Lancement du cluster minikube avec kubernetes v1.15.12 :
+minikube start --driver=docker --kubernetes-version=v1.15.12
+
+2) Lancement d'un benchmark :
+user@ubuntu:~/projetBlockchain/caliper-sawtooth-smallbank$ npx caliper launch master --caliper-bind-sut sawtooth:latest --caliper-workspace . --caliper-benchconfig benchmark/config.yaml --caliper-networkconfig network/sawtooth.json
+
+------------------------------------
+
+Caliper fonctionne toujours pas donc on va partir sur l'idée qu'on va devoir
+faire notre propre outil comme prévu.
+Donc prochaine étape : trouver comment soumettre des transactions smallbank valides
+aléatoires dans un but d'automatisation.

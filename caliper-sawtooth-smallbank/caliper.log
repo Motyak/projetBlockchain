@@ -1,0 +1,14 @@
+2021.05.08-23:51:46.920[90m debug[39m [caliper] [blockchain] 	Constructed a winston logger with the specified settings
+2021.05.08-23:51:47.652[32m info [39m [caliper] [cli-launch-master] 	Binding specification is present, performing binding for "sawtooth:latest"
+2021.05.08-23:51:47.675[33m warn [39m [caliper] [bind] 	Working directory not specified. Using "/home/motyak/projetBlockchain/caliper-sawtooth-smallbank"
+2021.05.08-23:51:47.676[32m info [39m [caliper] [bind] 	Binding for sawtooth@latest. This might take some time...
+2021.05.08-23:51:47.677[32m info [39m [caliper] [bind] 	Using working directory: /home/motyak/projetBlockchain/caliper-sawtooth-smallbank
+2021.05.08-23:51:47.678[32m info [39m [caliper] [bind] 	Calling npm with: install sawtooth-sdk@1.0.5
+2021.05.08-23:53:04.014[31m error[39m [caliper] [bind] 	Failed to execute "npm" with return code 1.
+2021.05.08-23:55:40.705[90m debug[39m [caliper] [blockchain] 	Constructed a winston logger with the specified settings
+2021.05.08-23:55:40.913[32m info [39m [caliper] [cli-launch-master] 	Binding specification is present, performing binding for "sawtooth:latest"
+2021.05.08-23:55:40.924[33m warn [39m [caliper] [bind] 	Working directory not specified. Using "/home/motyak/projetBlockchain/caliper-sawtooth-smallbank"
+2021.05.08-23:55:40.926[32m info [39m [caliper] [bind] 	Binding for sawtooth@latest. This might take some time...
+2021.05.08-23:55:40.927[32m info [39m [caliper] [bind] 	Using working directory: /home/motyak/projetBlockchain/caliper-sawtooth-smallbank
+2021.05.08-23:55:40.928[32m info [39m [caliper] [bind] 	Calling npm with: install sawtooth-sdk@1.0.5
+2021.05.08-23:56:50.109[31m error[39m [caliper] [bind] 	Failed to execute "npm" with return code 1.
